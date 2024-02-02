@@ -1,0 +1,119 @@
+
+<div>
+  <h2>Tabla de Usuarios</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h2>Tabla de Notas</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nota</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let nota of notas">
+        <td>{{ nota.id }}</td>
+        <td>{{ nota.nota }}</td>
+        <td>{{ nota.fecha }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h2>Tabla de Promedios</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID Usuario</th>
+        <th>Promedio Final</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let promedio of promedios; let i = index">
+      <tr>
+        <td>{{ promedio.userId }}</td>
+        <td>{{ promedio.promedioFinal }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ... Resto del código ... -->
+
+<h3>Progresos</h3>
+
+<!-- Botones para seleccionar progreso -->
+<div>
+  <button (click)="seleccionarProgreso('progreso1')">Progreso 1</button>
+  <button (click)="seleccionarProgreso('progreso2')">Progreso 2</button>
+  <button (click)="seleccionarProgreso('progreso3')">Progreso 3</button>
+  <button (click)="seleccionarProgreso('todo')">Todo</button>
+</div>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre Estudiante</th>
+      <th>Total Notas</th>
+      <th>Promedio</th>
+      <th>Fecha de Inicio</th>
+      <th>Fecha de Fin</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let promedio of promedios; let i = index">
+    <!-- Utilizar ngIf para mostrar solo el progreso seleccionado -->
+    <ng-container *ngIf="progresoSeleccionado === 'todo' || progresoSeleccionado === 'progreso1'">
+      <tr *ngIf="progresoSeleccionado === 'progreso1' || progresoSeleccionado === 'todo'">
+        <td>{{ promedio.userId }}</td> 
+        <td>{{ getUserName(promedio.userId) }}</td>
+        <td>{{ promedio.progreso1.totalNotas }}</td>
+        <td>{{ promedio.progreso1.Promedio }}</td>
+        <td>{{ promedio.progreso1.startDate }}</td>
+        <td>{{ promedio.progreso1.endDate }}</td>
+      </tr>
+    </ng-container>
+
+    <!-- Repetir la misma lógica para 'progreso2' -->
+    <ng-container *ngIf="progresoSeleccionado === 'todo' || progresoSeleccionado === 'progreso2'">
+      <tr *ngIf="progresoSeleccionado === 'progreso2' || progresoSeleccionado === 'todo'">
+        <td>{{ promedio.userId }}</td> 
+        <td>{{ getUserName(promedio.userId) }}</td>
+        <td>{{ promedio.progreso2.totalNotas }}</td>
+        <td>{{ promedio.progreso2.Promedio }}</td>
+        <td>{{ promedio.progreso2.startDate }}</td>
+        <td>{{ promedio.progreso2.endDate }}</td>
+      </tr>
+    </ng-container>
+
+    <!-- Repetir la misma lógica para 'progreso3' -->
+    <ng-container *ngIf="progresoSeleccionado === 'todo' || progresoSeleccionado === 'progreso3'">
+      <tr *ngIf="progresoSeleccionado === 'progreso3' || progresoSeleccionado === 'todo'">
+        <td>{{ promedio.userId }}</td> 
+        <td>{{ getUserName(promedio.userId) }}</td>
+        <td>{{ promedio.progreso3.totalNotas }}</td>
+        <td>{{ promedio.progreso3.Promedio }}</td>
+        <td>{{ promedio.progreso3.startDate }}</td>
+        <td>{{ promedio.progreso3.endDate }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+</div>
+
