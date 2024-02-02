@@ -1,0 +1,30 @@
+GET http://localhost:4000/UsersProm
+
+
+###
+POST  http://localhost:4000/AddUser
+Content-Type: application/json
+
+{
+
+    "name": "Pablo Chasipanta",
+    "id": 1
+
+}
+
+###
+POST  http://localhost:4000/AddNota
+Content-Type: application/json
+
+{
+
+    "nota": 7,
+    "id": 1,
+    "fecha":"2024-02-04"
+
+}
+
+### 
+GET http://localhost:4000/Users
+### 
+GET http://localhost:4000/Notas
